@@ -40,9 +40,13 @@ public class LevelLoader : MonoBehaviour
     /// </summary>
     private void GenerateLevel()
     {
+        if (++levelCounter >= levels.Count)
+        {
+            levelCounter = 1;
+        }
         result.text = "";
         timer.Reset();
-        levelNumber.text = $"{++levelCounter}/{levels.Count}";
+        levelNumber.text = $"{levelCounter}/{levels.Count}";
         //selectedMathOperator = (MathOperator)mathOperatorValues.GetValue(Random.Range(0, mathOperatorValues.Length));
         selectedMathOperator = levels[levelCounter - 1].mathOperator;
         switch (selectedMathOperator)
